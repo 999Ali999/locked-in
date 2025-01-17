@@ -1,6 +1,7 @@
+import { formatTime } from "@/lib/utils";
 import { SkipForward } from "lucide-react";
-import { Button } from "./ui/button";
-import { CardContent, CardFooter } from "./ui/card";
+import { Button } from "../../ui/button";
+import { CardContent, CardFooter } from "../../ui/card";
 
 type CountDownProps = {
   timeLeft: number;
@@ -10,6 +11,7 @@ type CountDownProps = {
   isPaused: boolean;
   setIsPaused: (paused: boolean) => void;
   timerRef: React.RefObject<NodeJS.Timeout | null>;
+  skipTimer: () => void;
 };
 
 const CountDown = ({
@@ -18,6 +20,7 @@ const CountDown = ({
   setIsActive,
   setIsPaused,
   timerRef,
+  skipTimer,
 }: CountDownProps) => {
   const handleStart = (): void => {
     if (timeLeft > 0) {
@@ -36,15 +39,8 @@ const CountDown = ({
     }
   };
 
-  const skipTimer = (): void => {};
-
-  const formatTime = (time: number): string => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
-      2,
-      "0"
-    )}`;
+  const handleSkipTimer = (): void => {
+    skipTimer();
   };
 
   return (
@@ -63,7 +59,7 @@ const CountDown = ({
           </Button>
         )}
         {isActive && (
-          <Button onClick={skipTimer} size="myxl">
+          <Button onClick={handleSkipTimer} variant="outline" size="myxl">
             <div>
               <SkipForward />
             </div>

@@ -1,9 +1,12 @@
-import { MainCard } from "./main-card";
+import { Pomodoro } from "./features/pomodoro/pomodoro";
+import { Todo } from "./features/todo/todo";
 
 const Main = () => {
   return (
     <div className="mx-20">
-      <MainCard />
+      <Pomodoro />
+
+      <Todo />
     </div>
   );
 };

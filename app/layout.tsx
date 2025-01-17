@@ -16,7 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Time to Locke In",
-  description: "",
+  description:
+    "A productivity app that helps you focus on your work by using the Pomodoro Technique.",
 };
 
 export default function RootLayout({
