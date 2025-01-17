@@ -1,12 +1,12 @@
 import { Pomodoro } from "./features/pomodoro/pomodoro";
-import { Todo } from "./features/todo/todo";
+import { Tasks } from "./features/todo/tasks";
 
 const Main = () => {
   return (
     <div className="mx-20">
       <Pomodoro />
 
-      <Todo />
+      <Tasks />
     </div>
   );
 };
