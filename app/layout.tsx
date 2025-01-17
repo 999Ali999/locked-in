@@ -36,7 +36,7 @@ export default function RootLayout({
           defaultTheme="system"
         >
           <Header />
-          <main className="mx-[430px]">{children}</main>
+          <main>{children}</main>
         </ThemeProvider>
       </body>
     </html>

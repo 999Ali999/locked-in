@@ -155,7 +155,7 @@ const Pomodoro = () => {
         />
       </Card>
 
-      <div className="mt-7 flex justify-center gap-x-1">
+      <div className="mt-8 flex justify-center gap-x-1">
         <div className="flex gap-x-2">
           <HoverCard>
             <HoverCardTrigger>

@@ -7,8 +7,8 @@ import { Separator } from "./ui/separator";
 
 const Header = () => {
   return (
-    <div className="mx-[430px]">
-      <header className="flex justify-between items-center py-3.5">
+    <>
+      <header className="flex justify-between items-center py-3.5 px-4">
         <div>
           <h1 className="flex align-items gap-2 text-2xl font-bold">
             <Button asChild variant="ghost">
@@ -27,7 +27,7 @@ const Header = () => {
       </header>
 
       <Separator />
-    </div>
+    </>
   );
 };
 
