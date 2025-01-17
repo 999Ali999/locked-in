@@ -29,7 +29,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system">
+        <ThemeProvider
+          disableTransitionOnChange
+          attribute="class"
+          defaultTheme="system"
+        >
           <Header />
           <main className="mx-[430px]">{children}</main>
         </ThemeProvider>

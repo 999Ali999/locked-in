@@ -16,8 +16,6 @@ const MainCard = () => {
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // session should be 25 minutes, short break should be 5 minutes and longer break after 4 work sessions should be 15 minutes
-
   useEffect(() => {
     if (isActive && !isPaused) {
       timerRef.current = setInterval(() => {
@@ -25,21 +23,36 @@ const MainCard = () => {
           if (prevTime <= 1) {
             clearInterval(timerRef.current!);
 
-            console.log("Timer ended");
-            setWorkSessions((prevSessions) => {
-              if (prevSessions === 3) {
-                setWorkSessions(0);
-                setCountDownType("LONG_BREAK");
-                setTimeLeft(900);
-                return 0;
-              }
-              setCountDownType("SHORT_BREAK");
-              setTimeLeft(300);
-              return prevSessions + 1;
-            });
-            setIsActive(false);
+            if (countDownType === "POMODORO") {
+              setWorkSessions((prevSessions) => {
+                if (prevSessions === 3) {
+                  setWorkSessions(0);
+                  setCountDownType("LONG_BREAK");
+                  setTimeLeft(900);
+                  return 0;
+                }
+                setCountDownType("SHORT_BREAK");
+                setTimeLeft(300);
+                return prevSessions + 1;
+              });
+              setIsActive(false);
 
-            return 0;
+              return 0;
+            }
+
+            if (countDownType === "SHORT_BREAK") {
+              setCountDownType("POMODORO");
+              setTimeLeft(1500);
+              setIsActive(false);
+              return 0;
+            }
+
+            if (countDownType === "LONG_BREAK") {
+              setCountDownType("POMODORO");
+              setTimeLeft(1500);
+              setIsActive(false);
+              return 0;
+            }
           }
           return prevTime - 1;
         });
@@ -50,7 +63,7 @@ const MainCard = () => {
         clearInterval(timerRef.current);
       }
     };
-  }, [isActive, isPaused]);
+  }, [isActive, isPaused, countDownType]);
 
   console.log(isActive, workSessions);
 
@@ -66,7 +79,7 @@ const MainCard = () => {
                 setTimeLeft(3);
               }}
               size="sm"
-              variant={countDownType === "POMODORO" ? "selectedGhost" : "ghost"}
+              variant={countDownType === "POMODORO" ? "ghostSelected" : "ghost"}
               className="font-bold"
             >
               Pomodoro
@@ -75,11 +88,11 @@ const MainCard = () => {
               onClick={() => {
                 setCountDownType("SHORT_BREAK");
                 setIsActive(false);
-                setTimeLeft(300);
+                setTimeLeft(5);
               }}
               size="sm"
               variant={
-                countDownType === "SHORT_BREAK" ? "selectedGhost" : "ghost"
+                countDownType === "SHORT_BREAK" ? "ghostSelected" : "ghost"
               }
               className="font-bold"
             >
@@ -89,11 +102,11 @@ const MainCard = () => {
               onClick={() => {
                 setCountDownType("LONG_BREAK");
                 setIsActive(false);
-                setTimeLeft(900);
+                setTimeLeft(6);
               }}
               size="sm"
               variant={
-                countDownType === "LONG_BREAK" ? "selectedGhost" : "ghost"
+                countDownType === "LONG_BREAK" ? "ghostSelected" : "ghost"
               }
               className="font-bold"
             >
