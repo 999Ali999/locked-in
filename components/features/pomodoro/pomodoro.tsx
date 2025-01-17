@@ -91,12 +91,15 @@ const Pomodoro = () => {
 
   // Handle timer countdown
   useEffect(() => {
+    const clockAlarm = new Audio("/sounds/clock-alarm.mp3");
+
     if (isActive && !isPaused) {
       timerRef.current = setInterval(() => {
         setTimeLeft((prevTime) => {
           if (prevTime <= 1) {
             clearInterval(timerRef.current!);
             setShouldTransition(true);
+            clockAlarm.play();
             return 0;
           }
           return prevTime - 1;
