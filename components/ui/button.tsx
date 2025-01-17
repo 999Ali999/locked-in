@@ -20,12 +20,15 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-neutral-100 hover:text-neutral-900 dark:hover:bg-neutral-800 dark:hover:text-neutral-50",
         link: "text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-50",
+        selectedGhost:
+          "bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         xl: "h-14 rounded-lg px-20",
+        myxl: "h-14 rounded-lg px-5",
         icon: "h-10 w-10",
       },
     },
