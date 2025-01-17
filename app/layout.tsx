@@ -36,7 +36,7 @@ export default function RootLayout({
           defaultTheme="system"
         >
           <Header />
-          <main>{children}</main>
+          <main className="flex justify-center items-center">{children}</main>
         </ThemeProvider>
       </body>
     </html>

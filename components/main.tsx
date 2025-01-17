@@ -3,9 +3,8 @@ import { Tasks } from "./features/todo/tasks";
 
 const Main = () => {
   return (
-    <div className="mx-20">
+    <div className="w-[480px] flex flex-col">
       <Pomodoro />
-
       <Tasks />
     </div>
   );
